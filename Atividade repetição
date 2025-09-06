@@ -1,0 +1,115 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/NateDN/Nate_D/blob/main/Atividade%20repeti%C3%A7%C3%A3o\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "7A09q8p2-pIv"
+      },
+      "source": [
+        "Implementar uma repetição que solicite as informações do usuário até que seja informado o número 3."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "colab": {
+          "background_save": true,
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "52HFq2L78Ia8",
+        "outputId": "d361f5b5-5ebb-4ca9-8905-304edc5e2469"
+      },
+      "outputs": [
+        {
+          "name": "stdout",
+          "output_type": "stream",
+          "text": [
+            "Menu de opções:\n",
+            "1 - Cadastrar novo usuário\n",
+            "2 - Listar todos os usuários cadastrados\n",
+            "3 - Sair do sistema\n",
+            "Nenhum usuário cadastrado.\n",
+            "Menu de opções:\n",
+            "1 - Cadastrar novo usuário\n",
+            "2 - Listar todos os usuários cadastrados\n",
+            "3 - Sair do sistema\n"
+          ]
+        }
+      ],
+      "source": [
+        "def mostrar_menu():\n",
+        "    print(\"Menu de opções:\")\n",
+        "    print(\"1 - Cadastrar novo usuário\")\n",
+        "    print(\"2 - Listar todos os usuários cadastrados\")\n",
+        "    print(\"3 - Sair do sistema\")\n",
+        "\n",
+        "def cadastrar_usuario():\n",
+        "    nome = input(\"Digite o nome do usuário: \")\n",
+        "    while True:\n",
+        "        idade_str = input(\"Digite a idade do usuário: \")\n",
+        "        if idade_str.isdigit():\n",
+        "            idade = int(idade_str)\n",
+        "            break\n",
+        "        else:\n",
+        "            print(\"Idade inválida! Por favor, digite um número inteiro.\")\n",
+        "    return {\"nome\": nome, \"idade\": idade}\n",
+        "\n",
+        "def listar_usuarios(lista):\n",
+        "    if not lista:\n",
+        "        print(\"Nenhum usuário cadastrado.\")\n",
+        "    else:\n",
+        "        print(\"Lista de usuários cadastrados:\")\n",
+        "        for i, usuario in enumerate(lista, start=1):\n",
+        "            print(f\"{i} - Nome: {usuario['nome']}, Idade: {usuario['idade']}\")\n",
+        "\n",
+        "def sistema():\n",
+        "    usuarios = []\n",
+        "    while True:\n",
+        "        mostrar_menu()\n",
+        "        opcao = input(\"Escolha os números de 1 até 3: \")\n",
+        "\n",
+        "        if opcao == \"1\":\n",
+        "            usuario = cadastrar_usuario()\n",
+        "            usuarios.append(usuario)\n",
+        "            print(\"Usuário cadastrado com sucesso!\")\n",
+        "        elif opcao == \"2\":\n",
+        "            listar_usuarios(usuarios)\n",
+        "        elif opcao == \"3\":\n",
+        "            print(\"Saindo do sistema. Até logo!\")\n",
+        "            break\n",
+        "        else:\n",
+        "            print(\"Opção inválida. Por favor, escolha 1, 2 ou 3.\")\n",
+        "\n",
+        "if __name__ == \"__main__\":\n",
+        "    sistema()"
+      ]
+    }
+  ],
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "authorship_tag": "ABX9TyOakTrfek+KlPJ+C+/YT6k0",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "display_name": "Python 3",
+      "name": "python3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 0
+}
