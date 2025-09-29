@@ -1,0 +1,262 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": []
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "source": [
+        "#Atividade Prática simples para fixação"
+      ],
+      "metadata": {
+        "id": "Zh8xNqviYupV"
+      }
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "1.Crie um programa que peça ao usuário para digitar dois números. tente realizar a divisão do primeiro pelo. Use try e except para tratar o erro caso o segundo seja zero."
+      ],
+      "metadata": {
+        "id": "rQLnGimYsImH"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "try:\n",
+        "    # Entrada de dados\n",
+        "    num1 = float(input(\"Digite o primeiro número: \"))\n",
+        "    num2 = float(input(\"Digite o segundo número: \"))\n",
+        "\n",
+        "    # Tentativa de divisão\n",
+        "    resultado = num1 / num2\n",
+        "    print(f\"O resultado da divisão é: {resultado}\")\n",
+        "\n",
+        "except ZeroDivisionError:\n",
+        "    print(\"Erro: Não é possível dividir por zero!\")\n"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "wxYaCZN80Bw3",
+        "outputId": "616a7fda-9998-4b7c-d960-4e84aa8ce690"
+      },
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Digite o primeiro número: 0\n",
+            "Digite o segundo número: 0\n",
+            "Erro: Não é possível dividir por zero!\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "2.Modifique o programa anterior para também tratar o erro caso o usuário digite algo que não seja um número (ex: uma letra ou palavra).\n",
+        "\n",
+        "\n"
+      ],
+      "metadata": {
+        "id": "2wxbvROZYr_D"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "try:\n",
+        "    # pede dois números\n",
+        "    num1 = float(input(\"Digite o primeiro número: \"))\n",
+        "    num2 = float(input(\"Digite o segundo número: \"))\n",
+        "\n",
+        "    # tenta fazer a divisão\n",
+        "    resultado = num1 / num2\n",
+        "    print(f\"O resultado da divisão é: {resultado}\")\n",
+        "\n",
+        "except ZeroDivisionError:\n",
+        "    print(\"Erro: Não é possível dividir por zero!\")\n",
+        "\n",
+        "except ValueError:\n",
+        "    print(\"Erro: Você deve digitar apenas números!\")\n"
+      ],
+      "metadata": {
+        "id": "vU8oSTE66tm5"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "3.Crie um programa que tente abrir um arquivo chamado meu_texto.txt para leitura. Se o arquivo não existir, exiba uma mensagem amigável ao usuário. Se existir, leia e imprima seu conteúdo. (Você pode criar o arquivo manualmente para testar o caso de sucesso)."
+      ],
+      "metadata": {
+        "id": "X9Sfu6wZZN_y"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "try:\n",
+        "    # cria o arquivo e escreve algo (apenas para garantir que existe)\n",
+        "    with open(\"meu_texto.txt\", \"w\", encoding=\"utf-8\") as arquivo:\n",
+        "        arquivo.write(\"Texto grande de exemplo.\\n\")\n",
+        "        arquivo.write(\"Você pode editar este arquivo manualmente se quiser.\\n\")\n",
+        "\n",
+        "    # agora tenta abrir o arquivo para leitura\n",
+        "    with open(\"meu_texto.txt\", \"r\", encoding=\"utf-8\") as arquivo:\n",
+        "        conteudo = arquivo.read()\n",
+        "        print(\"Conteúdo do arquivo:\")\n",
+        "        print(conteudo)\n",
+        "\n",
+        "except FileNotFoundError:\n",
+        "    print(\"O arquivo 'meu_texto.txt' não foi encontrado. Crie-o manualmente para continuar.\")\n"
+      ],
+      "metadata": {
+        "id": "6FSjPf9Laehb"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "#Desafios Extras(Nível Intermediário)"
+      ],
+      "metadata": {
+        "id": "8Sxx-RuIae85"
+      }
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "1. Desenvolva uma função que receba uma lista e um índice. A função deve tentar retornar o elemento da lista naquele índice. Use try e except indexError para tratar o caso em que o índice está fora dos limites da lista."
+      ],
+      "metadata": {
+        "id": "lvzxElrpdSCT"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "def acessar_elemento(lista, indice):\n",
+        "    try:\n",
+        "        return lista[indice]\n",
+        "    except IndexError:\n",
+        "        return \"Erro: índice fora dos limites da lista.\"\n",
+        "\n",
+        "\n",
+        "# Exemplo de uso:\n",
+        "minha_lista = [10, 20, 30, 40]\n",
+        "\n",
+        "print(acessar_elemento(minha_lista, 2))  # válido → retorna 30\n",
+        "print(acessar_elemento(minha_lista, 10)) # inválido → mensagem de erro\n"
+      ],
+      "metadata": {
+        "id": "3SFxi_9HbIdD"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "2. Crie uma programa que simule um sistema de login. Peça ao usuário um nome de usuário e uma senha. Use um dicionário para armazenar usuário e senhas válidos. Implemente tratamento de erros para:\n",
+        "\n",
+        "-  keyError: se o nome de usuário não existir no dicionário.\n",
+        "\n",
+        "- Um erro genérico: Se a senha estiver incorreta (você pode lançar uma exceção personalizada ou apenas imprimir uma mensagem)."
+      ],
+      "metadata": {
+        "id": "rammZwizd2aK"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "# dicionário com usuários e senhas válidos\n",
+        "usuarios = {\n",
+        "    \"daniel\": \"1234\",\n",
+        "    \"maria\": \"abcd\",\n",
+        "    \"joao\": \"senha123\"\n",
+        "}\n",
+        "\n",
+        "# solicita login do usuário\n",
+        "nome = input(\"Digite seu nome de usuário: \")\n",
+        "senha = input(\"Digite sua senha: \")\n",
+        "\n",
+        "try:\n",
+        "    # tenta acessar a senha correspondente ao usuário\n",
+        "    senha_correta = usuarios[nome]\n",
+        "\n",
+        "    # verifica se a senha está correta\n",
+        "    if senha == senha_correta:\n",
+        "        print(\"Login realizado com sucesso!\")\n",
+        "    else:\n",
+        "        # lança um erro genérico ou imprime mensagem\n",
+        "        raise Exception(\"Senha incorreta!\")\n",
+        "\n",
+        "except KeyError:\n",
+        "    print(f\"Erro: o usuário '{nome}' não existe!\")\n",
+        "\n",
+        "except Exception as e:\n",
+        "    print(f\"Erro: {e}\")\n"
+      ],
+      "metadata": {
+        "id": "6CQHt5q5e2WC"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "3. Pesquise sobre a instrução raise em Python. Crie uma função que calcule a raiz quadrada de um número. Se o número for negativo, a função deve raise (lançar) um valueError com uma mensagem apropriada, em vez de apenas imprimir um erro."
+      ],
+      "metadata": {
+        "id": "C2uzjLxde21J"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "import math\n",
+        "\n",
+        "def calcular_raiz_quadrada(numero):\n",
+        "    if numero < 0:\n",
+        "        raise ValueError(\"Erro: Não é possível calcular a raiz quadrada de um número negativo.\")\n",
+        "    return math.sqrt(numero)\n",
+        "\n",
+        "# Exemplo de uso\n",
+        "try:\n",
+        "    numero = float(input(\"Digite um número para calcular sua raiz quadrada: \"))\n",
+        "    resultado = calcular_raiz_quadrada(numero)\n",
+        "    print(f\"A raiz quadrada de {numero} é {resultado:.2f}\")\n",
+        "except ValueError as e:\n",
+        "    print(e)\n"
+      ],
+      "metadata": {
+        "id": "a2yxPXODhGhJ"
+      },
+      "execution_count": null,
+      "outputs": []
+    }
+  ]
+}
